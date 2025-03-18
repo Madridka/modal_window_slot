@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="isModalOpen = true">Открыть модальное окно</button>
+    <ModalWindow :is-visible="isModalOpen" @close="isModalOpen = false">
+      <h1>Контент модального окна</h1>
+      <h3>Если в родительском компоненте тут ничего не будет, то отразиться контент 
+        в дочернем компоненте в slot, а именно "Тут контент"</h3>
+    </ModalWindow>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ModalWindow from "./components/ModalWindow.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    ModalWindow,
+  },
+  data() {
+    return {
+      isModalOpen: false,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
